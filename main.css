@@ -4,4 +4,93 @@
   padding: 0;
   margin: 0;
 }
+
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  background-color: #006d77;
+  min-height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 5rem;
+  color: #edf6f9;
+  margin-bottom: 1rem;
+}
+
+header input {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 0.5rem 8rem;
+  margin: 0 0.5rem;
+  text-indent: -2rem;
+}
+
+header form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #edf6f9;
+}
+
+#location-logo {
+  font-size: 3rem;
+}
+
+#header-logo {
+  font-size: 5rem;
+}
+
+main {
+  background: #83c5be;
+  height: 70vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather-container {
+  width: 50rem;
+  max-width: 80%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 5%;
+}
+
+.weather-container p {
+  font-size: 2rem;
+  font-weight: 500;
+}
 /*# sourceMappingURL=main.css.map */
