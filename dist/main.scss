@@ -3,3 +3,65 @@
     padding: 0;
     margin: 0;
 }
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;;
+}
+
+header {
+    background-color: #006d77;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        display: flex;
+        align-items: center;
+        font-size: 5rem;
+        color: #edf6f9;
+        margin-bottom: 1rem;
+    }
+    input {
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 0.5rem 8rem;
+        margin: 0 0.5rem;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        color: #edf6f9;
+    }
+}
+
+#location-logo {
+    font-size: 3rem;
+}
+
+#header-logo {
+    font-size: 5rem;
+}
+
+main {
+    background: #83c5be;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container {
+    width: 50rem;
+    max-width: 80%;
+    height: 60%;
+    background-color: rgba(white, 0.2);
+    p {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    margin-bottom: 5%;
+}

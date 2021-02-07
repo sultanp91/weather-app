@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
 <body>
-    <h1>Weather App</h1>
-    <input id="cityinput" type="text">  
-    <button id="submit">Submit!</button> 
-    <div>
-        <p>Temp: <span id="temp"></span></p>
-        <p>Temp Feel: <span id="tempfeel"></span></p>
-        <p>condition: <span id="condition"></span></p>
-        <p>Location: <span id="city"></span></p>
-        <img id="icon" src="" alt="weather icon">
-    </div>
+    <header>
+        <h1><i class="material-icons" id="header-logo">filter_drama</i>Weather App</h1>
+        <form>
+            <i id="location-logo" class="material-icons">location_on</i>
+            <input id="cityinput" type="text">  
+            <button id="submit">Submit!</button>
+        </form>
+
+    </header>
+    <main>
+        <div class="weather-container">
+            <p>Temp: <span id="temp">4C</span></p>
+            <p>Temp Feel: <span id="tempfeel">2C</span></p>
+            <p>condition: <span id="condition">Cloudy</span></p>
+            <p>Location: <span id="city">London</span></p>
+            <img id="icon" src="" alt="weather icon">
+        </div>
+    </main>
+   
     <script src="../src/index.js"></script>
 </body>
 </html>

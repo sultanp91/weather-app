@@ -16,7 +16,7 @@ const dataFactory = (temp, tempfeel, condition, icon, city) => {
 
 async function getWeatherData (city) {
 
-    const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d814b06e7180432ffac829ff0f153fb9`, { mode: "cors" })
+    const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d814b06e7180432ffac829ff0f153fb9`, { mode: "cors" })
     
     const data = await request.json();
    
@@ -28,9 +28,9 @@ async function getWeatherData (city) {
 
 locationsubmit.addEventListener("click", async () => {
    
-    let city = locationinput.value;
+    const city = locationinput.value;
 
-    let data = await getWeatherData(city);
+    const data = await getWeatherData(city);
 
     updateDOM(data);
 })
@@ -42,3 +42,23 @@ const updateDOM = (data) => {
     city.textContent = data.city;
     img.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
 }
+
+const userLocationInput = async function () {
+    
+        async function success(result) {
+        const coordinates = result.coords;
+        const latitude = coordinates.latitude;
+        const longitude = coordinates.longitude;
+
+        const locationRequest = await fetch(`https://eu1.locationiq.com/v1/reverse.php?key=pk.74f454060c7a9f8b245dd7bf24c08d88&lat=${latitude}&lon=${longitude}&format=json`)
+        const cityData = await locationRequest.json()
+        
+        const data = await getWeatherData(cityData.address.city);
+
+        updateDOM(data);
+
+    }
+    navigator.geolocation.getCurrentPosition(success)
+}
+
+  window.addEventListener('load', userLocationInput);
