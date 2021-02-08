@@ -1,5 +1,6 @@
 const locationinput = document.querySelector("#cityinput");
 const locationsubmit = document.querySelector("#submit");
+const locationIcon = document.querySelector("#location-logo");
 
 const temp = document.querySelector("#temp");
 const tempFeel = document.querySelector("#tempfeel");
@@ -11,7 +12,15 @@ const img = document.querySelector("#icon");
 
 const dataFactory = (temp, tempfeel, condition, icon, city) => {
     
-    return { temp, tempfeel, condition, icon, city }
+    const getTempCelsius = Math.round(temp);
+
+    const getTempFeelCelsius = Math.round(tempfeel);
+
+    const getTempFahrenheit = Math.round((temp * 1.8) + 32);
+
+    const getTempFeelFahrenheit = Math.round((tempfeel * 1.8) + 32);
+
+    return { getTempCelsius, getTempFeelCelsius, getTempFahrenheit, getTempFeelFahrenheit, condition, icon, city }
 }
 
 async function getWeatherData (city) {
@@ -26,8 +35,10 @@ async function getWeatherData (city) {
     return obj;
 }
 
-locationsubmit.addEventListener("click", async () => {
+locationsubmit.addEventListener("click", async (e) => {
    
+    e.preventDefault()
+
     const city = locationinput.value;
 
     const data = await getWeatherData(city);
@@ -36,8 +47,8 @@ locationsubmit.addEventListener("click", async () => {
 })
 
 const updateDOM = (data) => {
-    temp.textContent = data.temp;
-    tempfeel.textContent = data.tempfeel;
+    temp.textContent = data.getTempCelsius;
+    tempfeel.textContent = data.getTempFeelCelsius;
     condition.textContent = data.condition;
     city.textContent = data.city;
     img.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
@@ -62,3 +73,5 @@ const userLocationInput = async function () {
 }
 
   window.addEventListener('load', userLocationInput);
+
+  locationIcon.addEventListener('click', userLocationInput)

@@ -44,9 +44,19 @@ header input {
   border: none;
   outline: none;
   border-radius: 3px;
-  padding: 0.5rem 8rem;
+  width: 30rem;
+  padding: 0.5rem;
   margin: 0 0.5rem;
-  text-indent: -2rem;
+  font-size: 2rem;
+  background-color: #edf6f9;
+}
+
+header button {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 0.8rem 2rem;
+  background: #edf6f9;
 }
 
 header form {
@@ -56,11 +66,16 @@ header form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #edf6f9;
 }
 
 #location-logo {
   font-size: 3rem;
+  color: #edf6f9;
+}
+
+#location-logo:hover {
+  color: rgba(128, 128, 128, 0.8);
+  cursor: pointer;
 }
 
 #header-logo {

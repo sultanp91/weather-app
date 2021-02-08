@@ -27,19 +27,34 @@ header {
         border: none;
         outline: none;
         border-radius: 3px;
-        padding: 0.5rem 8rem;
+        width: 30rem;
+        padding: 0.5rem;
         margin: 0 0.5rem;
+        font-size: 2rem;
+        background-color: #edf6f9;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 0.8rem 2rem;
+        background: #edf6f9;
     }
 
     form {
         display: flex;
         align-items: center;
-        color: #edf6f9;
     }
 }
 
 #location-logo {
     font-size: 3rem;
+    color: #edf6f9;
+    &:hover {
+        color: rgba(gray, 0.8);
+        cursor: pointer;
+    }
 }
 
 #header-logo {
