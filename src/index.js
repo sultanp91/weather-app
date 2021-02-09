@@ -1,12 +1,20 @@
+// DOM Elements
 const locationinput = document.querySelector("#cityinput");
 const locationsubmit = document.querySelector("#submit");
 const locationIcon = document.querySelector("#location-logo");
+const toggleButton = document.querySelector('#toggle');
 
 const temp = document.querySelector("#temp");
 const tempFeel = document.querySelector("#tempfeel");
 const condition = document.querySelector("#condition");
 const city = document.querySelector("#city");
 const img = document.querySelector("#icon");
+
+// Object which will contain weather data to be rendered onto the DOM
+
+let weatherData = {};
+let displayCelsius = true;
+let displayFahrenheit = false;
 
 // Factory function to create objects with selected weather data
 
@@ -27,12 +35,13 @@ async function getWeatherData (city) {
 
     const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=d814b06e7180432ffac829ff0f153fb9`, { mode: "cors" })
     
-    const data = await request.json();
+    weatherDataRequest = await request.json();
    
-    const obj = await dataFactory(data.main.temp, data.main.feels_like, data.weather[0].description, 
-        data.weather[0].icon, data.name);
+    console.log(weatherData)
+    
+    weatherData = await dataFactory(weatherDataRequest.main.temp, weatherDataRequest.main.feels_like, weatherDataRequest.weather[0].main, 
+        weatherDataRequest.weather[0].icon, weatherDataRequest.name);
 
-    return obj;
 }
 
 locationsubmit.addEventListener("click", async (e) => {
@@ -41,17 +50,46 @@ locationsubmit.addEventListener("click", async (e) => {
 
     const city = locationinput.value;
 
-    const data = await getWeatherData(city);
+    await getWeatherData(city);
 
-    updateDOM(data);
+    updateDom();
 })
 
-const updateDOM = (data) => {
-    temp.textContent = data.getTempCelsius;
-    tempfeel.textContent = data.getTempFeelCelsius;
-    condition.textContent = data.condition;
-    city.textContent = data.city;
-    img.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+const updateDomCelsius = () => {
+    temp.textContent = `${weatherData.getTempCelsius}  \u00B0C`;
+    tempfeel.textContent = `${weatherData.getTempFeelCelsius} \u00B0C`;
+    condition.textContent = weatherData.condition;
+    city.textContent = weatherData.city;
+    img.src = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
+}
+
+const updateDomFahrenheit = () => {
+    temp.textContent = `${weatherData.getTempFahrenheit}  \u00B0F`;
+    tempfeel.textContent = `${weatherData.getTempFeelFahrenheit} \u00B0F`;
+    condition.textContent = weatherData.condition;
+    city.textContent = weatherData.city;
+    img.src = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
+}
+
+const updateDom = () => {
+    if (displayCelsius === true) {
+        updateDomCelsius();
+    } else if (displayFahrenheit === true){
+        updateDomFahrenheit();
+    }
+}
+
+const toggleUnits = () => {
+    if(displayCelsius === true) {
+        displayCelsius = false;
+        displayFahrenheit = true;
+        updateDom()
+    } 
+    else if(displayFahrenheit === true){
+        displayFahrenheit = false;
+        displayCelsius = true;
+        updateDom()
+    }
 }
 
 const userLocationInput = async function () {
@@ -64,9 +102,9 @@ const userLocationInput = async function () {
         const locationRequest = await fetch(`https://eu1.locationiq.com/v1/reverse.php?key=pk.74f454060c7a9f8b245dd7bf24c08d88&lat=${latitude}&lon=${longitude}&format=json`)
         const cityData = await locationRequest.json()
         
-        const data = await getWeatherData(cityData.address.city);
+        await getWeatherData(cityData.address.city);
 
-        updateDOM(data);
+        updateDom();
 
     }
     navigator.geolocation.getCurrentPosition(success)
@@ -75,3 +113,9 @@ const userLocationInput = async function () {
   window.addEventListener('load', userLocationInput);
 
   locationIcon.addEventListener('click', userLocationInput)
+
+  toggleButton.addEventListener("click", (e) => {
+        e.preventDefault()
+
+        toggleUnits();
+  });
