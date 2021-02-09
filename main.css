@@ -57,6 +57,7 @@ header button {
   border-radius: 3px;
   padding: 0.8rem 2rem;
   background: #edf6f9;
+  margin-right: 0.5rem;
 }
 
 header form {
