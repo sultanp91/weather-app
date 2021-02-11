@@ -58,6 +58,7 @@ header button {
   padding: 0.8rem 2rem;
   background: #edf6f9;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 header form {
@@ -85,7 +86,7 @@ header form {
 
 main {
   background: #83c5be;
-  height: 70vh;
+  min-height: 70vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,15 +99,48 @@ main {
 }
 
 .weather-container {
-  width: 50rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30rem;
+  border-radius: 5px;
   max-width: 80%;
-  height: 60%;
+  height: 35rem;
   background-color: rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 5%;
 }
 
-.weather-container p {
-  font-size: 2rem;
-  font-weight: 500;
+.weather-container h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.weather-container .icon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weather-container img {
+  width: 30%;
+  display: block;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 /*# sourceMappingURL=main.css.map */
